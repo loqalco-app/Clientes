@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estrategia Loqal.co — SME</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0B1F3A;
+    --navy-mid: #1A3557;
+    --blue: #1E6FD9;
+    --blue-light: #3B8EF0;
+    --teal: #0A9B8C;
+    --teal-light: #12BFB0;
+    --cream: #F7F4EF;
+    --white: #FFFFFF;
+    --gray-100: #F0EDE8;
+    --gray-200: #DDD9D2;
+    --gray-500: #8A8880;
+    --gray-700: #4A4845;
+    --text: #1A1816;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--navy);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(30,111,217,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,111,217,0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(10,155,140,0.18) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-glow-2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(30,111,217,0.15) 0%, transparent 70%);
+    bottom: 0; left: -80px;
+    pointer-events: none;
+  }
+
+  .hero-nav {
+    position: relative; z-index: 2;
+    padding: 2rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .logo-loqal {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+
+  .logo-loqal span {
+    color: var(--teal-light);
+  }
+
+  .hero-date {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 3rem 3rem 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(10,155,140,0.15);
+    border: 1px solid rgba(10,155,140,0.3);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 11px;
+    color: var(--teal-light);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    width: fit-content;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--teal-light);
+    display: block;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(42px, 7vw, 72px);
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    max-width: 700px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--teal-light);
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-cta-row {
+    display: flex; gap: 12px; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--teal);
+    color: var(--white);
+    border: none;
+    padding: 13px 28px;
+    border-radius: 8px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--teal-light); }
+
+  .btn-ghost {
+    background: transparent;
+    color: rgba(255,255,255,0.6);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 13px 28px;
+    border-radius: 8px;
+    font-family: var(--sans);
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.4); color: white; }
+
+  .hero-footer {
+    position: relative; z-index: 2;
+    padding: 2rem 3rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex; gap: 3rem; flex-wrap: wrap;
+  }
+
+  .hero-stat { }
+  .hero-stat-num {
+    font-family: var(--serif);
+    font-size: 28px;
+    color: var(--white);
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 4px;
+  }
+
+  /* ─── SECTIONS ─── */
+  .section {
+    padding: 5rem 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-full {
+    padding: 5rem 3rem;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(30px, 4vw, 44px);
+    color: var(--navy);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .section-lead {
+    font-size: 16px;
+    color: var(--gray-700);
+    max-width: 560px;
+    line-height: 1.75;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  /* ─── DIAGNÓSTICO ─── */
+  .diag-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--gray-200);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+
+  .diag-cell {
+    background: var(--white);
+    padding: 1.5rem;
+  }
+
+  .diag-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gray-500);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .diag-value {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .diag-note {
+    font-size: 12px;
+    color: var(--gray-500);
+    line-height: 1.5;
+  }
+
+  .problem-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .problem-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    border-left: 3px solid;
+  }
+
+  .problem-item.critical {
+    background: #FFF5F5;
+    border-color: #E24B4A;
+  }
+
+  .problem-item.warning {
+    background: #FFFBF0;
+    border-color: #BA7517;
+  }
+
+  .problem-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .problem-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+
+  .problem-desc {
+    font-size: 13px;
+    color: var(--gray-700);
+    line-height: 1.6;
+  }
+
+  /* ─── ESTRATEGIA ─── */
+  .strategy-bg {
+    background: var(--navy);
+    color: white;
+  }
+
+  .strategy-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 3rem;
+  }
+
+  .strategy-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 10px;
+  }
+
+  .strategy-title {
+    font-family: var(--serif);
+    font-size: clamp(30px, 4vw, 44px);
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .strategy-lead {
+    font-size: 15px;
+    color: rgba(255,255,255,0.5);
+    max-width: 520px;
+    line-height: 1.75;
+    margin-bottom: 3.5rem;
+    font-weight: 300;
+  }
+
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 2rem;
+  }
+
+  .pillar-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 1.75rem;
+    transition: border-color 0.2s;
+  }
+
+  .pillar-card:hover {
+    border-color: rgba(10,155,140,0.4);
+  }
+
+  .pillar-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    color: rgba(255,255,255,0.12);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .pillar-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .pillar-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.65;
+  }
+
+  .pillar-tag {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 100px;
+    background: rgba(10,155,140,0.2);
+    color: var(--teal-light);
+    border: 1px solid rgba(10,155,140,0.3);
+  }
+
+  /* ─── CAMPAÑAS ─── */
+  .campaigns-section {
+    background: var(--gray-100);
+  }
+
+  .camp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 2.5rem;
+  }
+
+  .camp-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+  }
+
+  .camp-header {
+    padding: 1.5rem;
+    position: relative;
+  }
+
+  .camp-header.c1 { background: linear-gradient(135deg, #0B1F3A 0%, #1A3557 100%); }
+  .camp-header.c2 { background: linear-gradient(135deg, #0A5C78 0%, #0A9B8C 100%); }
+  .camp-header.c3 { background: linear-gradient(135deg, #3B4FA8 0%, #1E6FD9 100%); }
+
+  .camp-num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 8px;
+  }
+
+  .camp-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+
+  .camp-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .camp-body {
+    padding: 1.5rem;
+  }
+
+  .camp-objective {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gray-500);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .camp-obj-value {
+    font-size: 13px;
+    color: var(--navy);
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+
+  .camp-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .camp-items li {
+    font-size: 13px;
+    color: var(--gray-700);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    line-height: 1.5;
+  }
+
+  .camp-items li::before {
+    content: '→';
+    color: var(--teal);
+    flex-shrink: 0;
+    font-size: 12px;
+    margin-top: 1px;
+  }
+
+  .camp-ticket {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--gray-100);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .camp-ticket-label {
+    font-size: 11px;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .camp-ticket-val {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--navy);
+  }
+
+  /* ─── CONTENIDO ORGÁNICO ─── */
+  .organic-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 2.5rem;
+  }
+
+  .organic-block {
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .organic-block.ent {
+    background: var(--navy);
+    color: white;
+  }
+
+  .organic-block.sell {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    color: var(--text);
+  }
+
+  .organic-pct {
+    font-family: var(--serif);
+    font-size: 72px;
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+  }
+
+  .organic-block.ent .organic-pct { color: var(--teal-light); }
+  .organic-block.sell .organic-pct { color: var(--blue); }
+
+  .organic-label {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .organic-block.ent .organic-label { color: var(--white); }
+  .organic-block.sell .organic-label { color: var(--navy); }
+
+  .organic-desc {
+    font-size: 13px;
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+  }
+  .organic-block.ent .organic-desc { color: rgba(255,255,255,0.5); }
+  .organic-block.sell .organic-desc { color: var(--gray-700); }
+
+  .content-tags {
+    display: flex; flex-wrap: wrap; gap: 7px;
+  }
+
+  .ctag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+
+  .organic-block.ent .ctag {
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .organic-block.sell .ctag {
+    background: #EAF6F9;
+    color: #0A5C78;
+    border: 1px solid #B5DDE8;
+  }
+
+  /* ─── PROCESO ─── */
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--gray-200);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 2.5rem;
+  }
+
+  .step {
+    background: var(--white);
+    padding: 1.75rem 1.5rem;
+  }
+
+  .step-num {
+    font-family: var(--serif);
+    font-size: 32px;
+    color: var(--gray-200);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .step-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .step-desc {
+    font-size: 12px;
+    color: var(--gray-500);
+    line-height: 1.6;
+  }
+
+  /* ─── LO QUE NECESITAMOS ─── */
+  .needs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 2.5rem;
+  }
+
+  .need-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .need-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: #E6F3F9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+    color: var(--blue);
+  }
+
+  .need-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+
+  .need-note {
+    font-size: 12px;
+    color: var(--gray-500);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+
+  /* ─── CIERRE ─── */
+  .close-section {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .close-grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(30,111,217,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,111,217,0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .close-inner {
+    position: relative; z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 3rem;
+    text-align: center;
+  }
+
+  .close-title {
+    font-family: var(--serif);
+    font-size: clamp(34px, 5vw, 52px);
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .close-title em {
+    font-style: italic;
+    color: var(--teal-light);
+  }
+
+  .close-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.45);
+    max-width: 440px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .close-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 100px;
+    padding: 10px 24px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 2.5rem;
+    text-decoration: none;
+  }
+
+  .close-contact strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: var(--gray-200);
+    margin: 0 3rem;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 700px) {
+    .hero-nav, .hero-content, .hero-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .section, .strategy-inner, .close-inner { padding: 3.5rem 1.5rem; }
+    .section-full { padding: 3.5rem 1.5rem; }
+    .diag-grid { grid-template-columns: 1fr; }
+    .pillar-grid { grid-template-columns: 1fr; }
+    .camp-grid { grid-template-columns: 1fr; }
+    .organic-split { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .needs-grid { grid-template-columns: 1fr 1fr; }
+    .hero-footer { gap: 1.5rem; }
+  }
+
+  @media (max-width: 440px) {
+    .process-steps { grid-template-columns: 1fr; }
+    .needs-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+
+  <nav class="hero-nav">
+    <div class="logo-loqal">Loqal<span>.co</span></div>
+    <div class="hero-date">Plan de trabajo · Junio 2026</div>
+  </nav>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Plan de trabajo activo</div>
+    <h1 class="hero-title">
+      Más pacientes.<br>
+      <em>Más reconocimiento.</em><br>
+      Tres sucursales que<br>se vean como una.
+    </h1>
+    <p class="hero-subtitle">
+      Estrategia de contenido orgánico y campañas en Meta, diseñada específicamente para Servicios Médicos Especializados.
+    </p>
+    <div class="hero-cta-row">
+      <a href="#estrategia" class="btn-primary">Ver el plan completo</a>
+      <a href="#roadmap" class="btn-ghost">Ver el roadmap</a>
+    </div>
+  </div>
+
+  <div class="hero-footer">
+    <div class="hero-stat">
+      <div class="hero-stat-num">3</div>
+      <div class="hero-stat-label">Campañas activas</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">80/20</div>
+      <div class="hero-stat-label">Entretenimiento vs venta</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">3 km</div>
+      <div class="hero-stat-label">Radio de impacto por sucursal</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">30 días</div>
+      <div class="hero-stat-label">Primer reporte de resultados</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ DIAGNÓSTICO ═══ -->
+<section class="section">
+  <p class="eyebrow">Punto de partida</p>
+  <h2 class="section-title">Lo que encontramos al revisar su cuenta</h2>
+  <p class="section-lead">
+    Antes de proponer cualquier acción, analizamos su presencia actual en Facebook. Esto es lo que encontramos — sin rodeos.
+  </p>
+
+  <div class="diag-grid">
+    <div class="diag-cell">
+      <div class="diag-label">Fortaleza principal</div>
+      <div class="diag-value">Oferta sólida</div>
+      <div class="diag-note">Laboratorio, dental, ultrasonidos, podología y más. El catálogo está ahí. El problema es cómo se comunica.</div>
+    </div>
+    <div class="diag-cell">
+      <div class="diag-label">Ticket promedio estimado</div>
+      <div class="diag-value">$125 – $1,000 MXN</div>
+      <div class="diag-note">Accesible para la zona. El check-up de $350 es la entrada perfecta para captación masiva.</div>
+    </div>
+    <div class="diag-cell">
+      <div class="diag-label">Cobertura geográfica</div>
+      <div class="diag-value">3 colonias clave</div>
+      <div class="diag-note">Iztacalco, Iztapalapa y Ejército Constitucionalista — zonas con alta densidad poblacional y poco anunciante médico.</div>
+    </div>
+    <div class="diag-cell">
+      <div class="diag-label">Problema central</div>
+      <div class="diag-value">Solo flyers de precio</div>
+      <div class="diag-note">Todo el contenido actual es una lista de servicios. No hay narrativa, no hay persona, no hay razón para elegirlos sobre la competencia.</div>
+    </div>
+  </div>
+
+  <div class="problem-list">
+    <div class="problem-item critical">
+      <div class="problem-icon">⚠️</div>
+      <div>
+        <div class="problem-title">Identidad visual inconsistente — prioridad alta</div>
+        <div class="problem-desc">Se identificaron tres versiones distintas del logo en los materiales actuales. En Meta Ads, esto destruye el reconocimiento de marca entre impresión e impresión. El usuario no sabe a quién está viendo.</div>
+      </div>
+    </div>
+    <div class="problem-item critical">
+      <div class="problem-icon">⚠️</div>
+      <div>
+        <div class="problem-title">Precios contradictorios entre publicaciones</div>
+        <div class="problem-desc">El Check-up 33 elementos aparece en $585 en un flyer y en $685 en otro. Si Meta sirve ambos al mismo usuario en la misma semana, genera desconfianza. Antes de anunciar, se necesita una lista oficial de precios.</div>
+      </div>
+    </div>
+    <div class="problem-item warning">
+      <div class="problem-icon">⚡</div>
+      <div>
+        <div class="problem-title">Sin video ni reels — desventaja competitiva en 2025</div>
+        <div class="problem-desc">Todo el contenido visible es imagen estática. En Meta hoy, los reels tienen un costo por resultado hasta 3 veces menor que imagen sola. No publicar video es dejar dinero sobre la mesa.</div>
+      </div>
+    </div>
+    <div class="problem-item warning">
+      <div class="problem-icon">⚡</div>
+      <div>
+        <div class="problem-title">Copy genérico que no genera diferenciación</div>
+        <div class="problem-desc">"Tu salud, nuestra prioridad." "Atención profesional y especializada." Cualquier laboratorio del país usa estas mismas frases. El copy debe hablar de lo que siente el paciente, no de lo que ofrece el servicio.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ═══ ESTRATEGIA ═══ -->
+<section class="strategy-bg" id="estrategia">
+  <div class="strategy-inner">
+    <p class="strategy-eyebrow">El plan</p>
+    <h2 class="strategy-title">Una estrategia en dos frentes</h2>
+    <p class="strategy-lead">
+      Contenido orgánico que construye confianza todos los días, y campañas pagadas que convierten esa confianza en citas agendadas.
+    </p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Contenido orgánico — 80/20</div>
+        <div class="pillar-desc">El 80% del contenido entretiene, educa y genera confianza sin vender. El 20% convierte directamente. Esta proporción no es arbitraria: es lo que hace que una página de salud se sienta como un recurso y no como un anuncio.</div>
+        <span class="pillar-tag">8 publicaciones/mes mínimo</span>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">3 campañas activas en Meta Ads</div>
+        <div class="pillar-desc">Una campaña por servicio ancla. Objetivo de conversación por WhatsApp. Segmentación geolocalizada a 3–5 km de cada sucursal. Los anuncios hablan al paciente, no al servicio.</div>
+        <span class="pillar-tag">Activas desde el día 1</span>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Identidad visual unificada</div>
+        <div class="pillar-desc">Antes de publicar cualquier anuncio, definimos un solo logo, una sola paleta y un solo tono de comunicación. Las tres sucursales deben verse como una sola marca.</div>
+        <span class="pillar-tag">Semana 1 — no negociable</span>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">04</div>
+        <div class="pillar-title">Reporte mensual de resultados</div>
+        <div class="pillar-desc">Cada 30 días reciben un reporte con los números que importan: costo por conversación, alcance real, contenido que funcionó y ajustes del siguiente mes. Sin pantallazos, con análisis.</div>
+        <span class="pillar-tag">Día 30 de cada mes</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CAMPAÑAS ═══ -->
+<section class="section-full campaigns-section">
+  <div style="max-width:900px; margin:0 auto; padding: 0 0 2.5rem;">
+    <p class="eyebrow">Meta Ads</p>
+    <h2 class="section-title">Las tres campañas</h2>
+    <p class="section-lead">Cada campaña tiene un servicio ancla, una audiencia específica y un mensaje construido para esa persona — no para todos.</p>
+  </div>
+
+  <div class="camp-grid" style="max-width:900px; margin:0 auto; padding:0;">
+    <!-- Campaña 1 -->
+    <div class="camp-card">
+      <div class="camp-header c1">
+        <div class="camp-num">Campaña 01</div>
+        <div class="camp-title">Check-up de entrada</div>
+        <span class="camp-badge">Volumen · WhatsApp</span>
+      </div>
+      <div class="camp-body">
+        <div class="camp-objective">Objetivo</div>
+        <div class="camp-obj-value">Generar conversaciones en WhatsApp para agendar</div>
+        <ul class="camp-items">
+          <li>Check-up básico $350 como gancho de adquisición</li>
+          <li>Audiencia: 25–55 años, radio 4 km por sucursal</li>
+          <li>Copy enfocado en prevención, no en precio</li>
+          <li>Creativos con foto real del personal o sucursal</li>
+          <li>Segmentación por colonia en cada unidad</li>
+        </ul>
+        <div class="camp-ticket">
+          <span class="camp-ticket-label">Ticket ancla</span>
+          <span class="camp-ticket-val">$350 MXN</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Campaña 2 -->
+    <div class="camp-card">
+      <div class="camp-header c2">
+        <div class="camp-num">Campaña 02</div>
+        <div class="camp-title">Ultrasonido de embarazo</div>
+        <span class="camp-badge">Emocional · Alto valor</span>
+      </div>
+      <div class="camp-body">
+        <div class="camp-objective">Objetivo</div>
+        <div class="camp-obj-value">Captación de pacientes embarazadas en zonas de cobertura</div>
+        <ul class="camp-items">
+          <li>Audiencia: mujeres 18–38, CDMX oriente</li>
+          <li>Creativo emocional — no técnico ni clínico</li>
+          <li>Mostrar el proceso, el resultado, el momento</li>
+          <li>Variante video con testimonio o demostración</li>
+          <li>Precio desde $300 visible en el anuncio</li>
+        </ul>
+        <div class="camp-ticket">
+          <span class="camp-ticket-label">Ticket desde</span>
+          <span class="camp-ticket-val">$300 – $1,000 MXN</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Campaña 3 -->
+    <div class="camp-card">
+      <div class="camp-header c3">
+        <div class="camp-num">Campaña 03</div>
+        <div class="camp-title">Salud femenina</div>
+        <span class="camp-badge">Segmentada · Confianza</span>
+      </div>
+      <div class="camp-body">
+        <div class="camp-objective">Objetivo</div>
+        <div class="camp-obj-value">Posicionar SME como la clínica de confianza para la mujer de la zona</div>
+        <ul class="camp-items">
+          <li>Perfil tiroideo, ginecológico y Papanicolaou</li>
+          <li>Audiencia: mujeres 30–55 años</li>
+          <li>Copy que habla de síntomas reales, no de exámenes</li>
+          <li>Tono: comprensivo, no clínico ni alarmista</li>
+          <li>Retargeting a quienes vieron campaña 01</li>
+        </ul>
+        <div class="camp-ticket">
+          <span class="camp-ticket-label">Ticket ancla</span>
+          <span class="camp-ticket-val">$415 – $920 MXN</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CONTENIDO ORGÁNICO ═══ -->
+<section class="section">
+  <p class="eyebrow">Contenido orgánico</p>
+  <h2 class="section-title">La regla que hace que la gente confíe en ustedes</h2>
+  <p class="section-lead">
+    En salud, la confianza se construye antes de que alguien necesite un servicio. El contenido orgánico es ese proceso.
+  </p>
+
+  <div class="organic-split">
+    <div class="organic-block ent">
+      <div class="organic-pct">80%</div>
+      <div class="organic-label">Contenido que entretiene y educa</div>
+      <div class="organic-desc">Publicaciones que la gente comparte porque les sirven o les sorprenden. Sin vender. Sin pedir cita. Solo generar confianza y reconocimiento de marca.</div>
+      <div class="content-tags">
+        <span class="ctag">¿Sabes qué indica tu glucosa en ayunas?</span>
+        <span class="ctag">Mitos del laboratorio desmentidos</span>
+        <span class="ctag">Qué pasa en un ultrasonido 4D</span>
+        <span class="ctag">Síntomas de tiroides que ignoramos</span>
+        <span class="ctag">Cuándo hacerse un check-up y cuándo no</span>
+        <span class="ctag">El proceso de un análisis de sangre en 60 seg</span>
+      </div>
+    </div>
+
+    <div class="organic-block sell">
+      <div class="organic-pct">20%</div>
+      <div class="organic-label">Contenido que convierte</div>
+      <div class="organic-desc">Publicaciones con precio, CTA directo y oferta clara. Solo funcionan bien porque el 80% anterior ya construyó la confianza necesaria.</div>
+      <div class="content-tags">
+        <span class="ctag">Promoción check-up junio</span>
+        <span class="ctag">Esta semana: limpieza dental 40% off</span>
+        <span class="ctag">Agenda tu ultrasonido hoy</span>
+        <span class="ctag">Paquete ginecológico completo</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 2rem; padding: 1.5rem 2rem; background: var(--gray-100); border-radius: 14px; border-left: 3px solid var(--teal);">
+    <div style="font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 6px;">Una nota importante sobre el tono en salud</div>
+    <div style="font-size: 13px; color: var(--gray-700); line-height: 1.7;">
+      El contenido de entretenimiento en una cuenta médica no significa hacer videos graciosos ni contenido absurdo. Significa hacer contenido que resuelve dudas reales, desmiente mitos que la gente tiene, muestra el proceso humano detrás de cada estudio, y habla de síntomas que la gente siente pero no sabe cómo nombrar. Eso genera shares. Eso genera confianza. Y eso convierte mejor que cualquier flyer de precio.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ═══ PROCESO / ROADMAP ═══ -->
+<section class="section" id="roadmap">
+  <p class="eyebrow">Roadmap</p>
+  <h2 class="section-title">Los primeros 30 días</h2>
+
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">Semana 1 — Análisis y parrilla</div>
+      <div class="step-desc">Diagnóstico del estado actual de la cuenta, definición de identidad visual unificada, precios oficiales y parrilla de contenido del mes.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">Semana 2 — Producción</div>
+      <div class="step-desc">Sesión de grabación en sucursales, diseño de creativos para las 3 campañas de Meta, configuración del Business Manager.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">Semanas 3–4 — Publicación y campañas</div>
+      <div class="step-desc">Arranca la publicación orgánica bajo la estrategia 80/20 y se lanzan las 3 campañas en Meta con objetivo de mensajes a WhatsApp.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">Día 30 — Primer reporte</div>
+      <div class="step-desc">Reporte completo: costo por conversación, alcance real, contenido ganador y plan de ajustes para el mes 2.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ LO QUE NECESITAMOS ═══ -->
+<section class="section-full" style="background: var(--gray-100);">
+  <div style="max-width:900px; margin:0 auto;">
+    <p class="eyebrow">De su parte</p>
+    <h2 class="section-title">Lo que necesitamos para arrancar</h2>
+    <p class="section-lead">Para que la estrategia funcione desde el día uno, necesitamos acceso a ciertos recursos. Sin estos, cualquier campaña trabaja a medias.</p>
+
+    <div class="needs-grid">
+      <div class="need-card">
+        <div class="need-icon">📋</div>
+        <div>
+          <div class="need-label">Lista oficial de precios</div>
+          <div class="need-note">Un solo documento con el precio definitivo de cada servicio. Esto resuelve la inconsistencia actual.</div>
+        </div>
+      </div>
+      <div class="need-card">
+        <div class="need-icon">🎨</div>
+        <div>
+          <div class="need-label">Logo en alta resolución</div>
+          <div class="need-note">Una sola versión oficial, en fondo transparente (.PNG). Unificamos desde ahí.</div>
+        </div>
+      </div>
+      <div class="need-card">
+        <div class="need-icon">📸</div>
+        <div>
+          <div class="need-label">Fotos y video reales</div>
+          <div class="need-note">De las instalaciones y el personal. Los creativos con imágenes reales convierten hasta 2x más que los de banco.</div>
+        </div>
+      </div>
+      <div class="need-card">
+        <div class="need-icon">🔐</div>
+        <div>
+          <div class="need-label">Acceso a Business Manager</div>
+          <div class="need-note">Necesitamos rol de administrador en la página de Facebook para gestionar los anuncios.</div>
+        </div>
+      </div>
+      <div class="need-card">
+        <div class="need-icon">💬</div>
+        <div>
+          <div class="need-label">WhatsApp activo por sucursal</div>
+          <div class="need-note">Las campañas dirigen tráfico a WhatsApp. Alguien debe responder en menos de 30 minutos.</div>
+        </div>
+      </div>
+      <div class="need-card">
+        <div class="need-icon">🤝</div>
+        <div>
+          <div class="need-label">Un contacto de seguimiento</div>
+          <div class="need-note">Una persona de SME que pueda aprobar creativos, responder preguntas y coordinar logística de fotos.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CIERRE ═══ -->
+<section class="close-section" id="cierre">
+  <div class="close-grid-bg"></div>
+  <div class="close-inner">
+    <p class="strategy-eyebrow" style="margin-bottom:14px;">¿Dudas o ajustes?</p>
+    <h2 class="close-title">
+      Sus pacientes están<br>
+      <em>en redes buscando</em><br>
+      dónde hacerse sus estudios.
+    </h2>
+    <p class="close-sub">
+      La pregunta no es si vale la pena estar en Meta. Es si van a aparecer ustedes o va a aparecer la competencia.
+    </p>
+    <a href="#estrategia" class="btn-primary" style="font-size:15px; padding:14px 32px;">Ver el plan de nuevo</a>
+  </div>
+</section>
+
+</body>
+</html>
