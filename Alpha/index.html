@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpha Luxury Company — Loqal.co</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #0E1117;
+  --bg2:     #13161F;
+  --bg3:     #1A1E28;
+  --card:    #1E2230;
+  --card2:   #232738;
+  --border:  #2A2E40;
+  --border2: #353A50;
+  --muted:   #6B7194;
+  --body:    #B8BDD4;
+  --title:   #E8EAF2;
+  --white:   #F4F5FA;
+  --grad: linear-gradient(120deg, #E0E0DC 0%, #9A9FAF 45%, #4A5070 100%);
+  --grad2: linear-gradient(120deg, #C8CAD8 0%, #7A7F95 100%);
+  --serif: 'Inter', sans-serif;
+  --sans:  'Inter', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--bg); color: var(--body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+/* ── GRAD TEXT ── */
+.gt { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+/* ── EYEBROW ── */
+.eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 14px; }
+
+/* ── SECTION TITLES ── */
+.stitle { font-family: var(--serif); font-size: clamp(34px, 5vw, 54px); font-weight: 800; line-height: 1.0; letter-spacing: -0.03em; color: var(--white); margin-bottom: 1rem; }
+.slead  { font-size: 16px; font-weight: 300; color: var(--body); max-width: 540px; line-height: 1.85; margin-bottom: 3rem; }
+
+/* ── LAYOUT ── */
+.wrap { max-width: 960px; margin: 0 auto; padding: 5.5rem 3rem; }
+hr.div { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+/* ════════════════ HERO ════════════════ */
+.hero {
+  min-height: 100vh; background: var(--bg);
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+}
+.hero-glow {
+  position: absolute; width: 900px; height: 900px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(100,110,160,0.12) 0%, transparent 60%);
+  top: -300px; right: -200px; pointer-events: none;
+}
+.hero-glow2 {
+  position: absolute; width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(80,90,140,0.08) 0%, transparent 65%);
+  bottom: -100px; left: -150px; pointer-events: none;
+}
+.hero-nav {
+  position: relative; z-index: 2;
+  padding: 2rem 3rem;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+.logo { font-family: var(--serif); font-size: 20px; font-weight: 700; letter-spacing: 0.02em; color: var(--white); }
+.logo span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.nav-tag { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+
+.hero-body {
+  position: relative; z-index: 2; flex: 1;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 4rem 3rem 3rem;
+}
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--card); border: 1px solid var(--border2);
+  border-radius: 100px; padding: 6px 16px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  color: var(--body); margin-bottom: 2.5rem; width: fit-content;
+}
+.hero-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--grad); flex-shrink: 0; }
+
+.hero-h1 {
+  font-family: var(--serif);
+  font-size: clamp(52px, 9vw, 96px);
+  font-weight: 800; line-height: 0.96;
+  letter-spacing: -0.03em; color: var(--white);
+  margin-bottom: 2.25rem; max-width: 700px;
+}
+.hero-h1 em { font-style: normal; font-weight: 800; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.hero-desc { font-size: 17px; font-weight: 300; color: var(--body); max-width: 480px; line-height: 1.85; margin-bottom: 3rem; }
+
+.cta-link { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--white); }
+.cta-arrow { width: 40px; height: 1px; background: var(--grad); position: relative; transition: width .3s; }
+.cta-arrow::after { content:''; position: absolute; right:0; top:-3px; width:7px; height:7px; border-right:1px solid var(--body); border-top:1px solid var(--body); transform:rotate(45deg); }
+.cta-link:hover .cta-arrow { width: 60px; }
+
+/* Stats bar */
+.hero-stats {
+  position: relative; z-index: 2;
+  border-top: 1px solid var(--border);
+  display: grid; grid-template-columns: repeat(4,1fr);
+}
+.hstat { padding: 1.75rem 2rem; border-right: 1px solid var(--border); }
+.hstat:last-child { border-right: none; }
+.hstat-n { font-family: var(--serif); font-size: 30px; font-weight: 700; line-height:1; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 5px; }
+.hstat-l { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+/* ════════════════ CARDS BASE ════════════════ */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.25rem;
+  transition: border-color .2s, background .2s;
+}
+.card:hover { border-color: var(--border2); background: var(--card2); }
+
+.card-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 10px; }
+.card-title { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 10px; line-height: 1.2; }
+.card-body { font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.85; }
+.card-body strong { color: var(--white); font-weight: 500; }
+
+/* ════════════════ DIAGNÓSTICO ════════════════ */
+.diag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.card.full { grid-column: 1 / -1; background: var(--bg3); border-color: var(--border2); }
+.card.full .card-title { font-size: 28px; }
+
+/* ════════════════ BENCHMARK ════════════════ */
+.bench-bg { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.bench-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+
+.bcard { background: var(--card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; }
+.bcard-head { padding: 1.75rem 2rem; border-bottom: 1px solid var(--border); background: var(--bg3); }
+.bcard-head.alpha-h { background: linear-gradient(135deg, #1E2235 0%, #252A3E 100%); border-bottom-color: var(--border2); }
+.bcard-label { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; display: block; }
+.bcard-name { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--white); line-height: 1.2; }
+
+.bcard-body { padding: 1.75rem 2rem; }
+.bmetric { margin-bottom: 1.25rem; }
+.bmetric:last-child { margin-bottom: 0; }
+.bmetric-l { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+.bmetric-v { font-family: var(--serif); font-size: 28px; font-weight: 300; color: var(--white); line-height: 1; }
+.bcard-note { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border); font-size: 13px; font-weight: 300; color: var(--body); line-height: 1.75; }
+
+/* ════════════════ OPORTUNIDAD ════════════════ */
+.opp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.ocard { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2.25rem; transition: border-color .2s; }
+.ocard:hover { border-color: var(--border2); }
+.ocard-num { font-family: var(--serif); font-size: 52px; font-weight: 300; color: var(--border2); line-height: 1; margin-bottom: 14px; }
+.ocard-title { font-size: 17px; font-weight: 600; color: var(--white); margin-bottom: 10px; line-height: 1.3; }
+.ocard-body { font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.85; }
+
+/* ════════════════ IDEAS ════════════════ */
+.ideas-bg { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.ideas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.icard { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2.25rem; transition: border-color .2s; }
+.icard:hover { border-color: var(--border2); }
+.icard-num { font-family: var(--serif); font-size: 54px; font-weight: 300; line-height: 1; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 14px; opacity: 0.5; }
+.icard-title { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 10px; line-height: 1.2; }
+.icard-body { font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.85; }
+.icard-badge { display: inline-block; margin-top: 16px; font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border2); padding: 4px 12px; border-radius: 6px; }
+
+/* ════════════════ INCLUYE ════════════════ */
+.inc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.inccard { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2rem 2.25rem; display: flex; gap: 1.25rem; align-items: flex-start; transition: border-color .2s; }
+.inccard:hover { border-color: var(--border2); }
+.inc-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--grad); flex-shrink: 0; margin-top: 8px; }
+.inc-title { font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 5px; }
+.inc-note { font-size: 14px; font-weight: 300; color: var(--body); line-height: 1.75; }
+
+/* ════════════════ ROADMAP ════════════════ */
+.roadmap-bg { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.roadmap-track { position: relative; margin-top: 3.5rem; }
+.rm-spine { position: absolute; top: 10px; left: 0; right: 0; height: 1px; background: var(--border); }
+.rm-grad-line { position: absolute; top: 10px; left: 0; right: 0; height: 1px; background: var(--grad); opacity: 0.35; }
+.rm-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; position: relative; padding-bottom: 1rem; }
+.rm-step { padding-top: 2.5rem; padding-right: 2rem; position: relative; }
+.rm-dot { position: absolute; top: 1px; left: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--bg2); border: 1px solid var(--border2); }
+.rm-step.now .rm-dot { background: var(--grad); border: none; box-shadow: 0 0 20px rgba(150,160,200,0.25); }
+.rm-week { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 10px; }
+.rm-title { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 8px; line-height: 1.2; }
+.rm-desc { font-size: 14px; font-weight: 300; color: var(--body); line-height: 1.75; }
+
+/* ════════════════ INVERSIÓN ════════════════ */
+.inv-box { background: var(--card); border: 1px solid var(--border2); border-radius: 24px; overflow: hidden; display: grid; grid-template-columns: 1fr 1.1fr; margin-top: 2.5rem; }
+.inv-left { padding: 3rem; border-right: 1px solid var(--border); background: var(--bg3); }
+.inv-price { font-family: var(--serif); font-size: 72px; font-weight: 300; line-height: 1; letter-spacing: -0.02em; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 6px; }
+.inv-pnote { font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 2rem; display: block; }
+.inv-pdesc { font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.85; }
+.inv-right { padding: 3rem; }
+.inv-right-label { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; display: block; }
+.inv-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.inv-list li { display: flex; gap: 14px; align-items: flex-start; font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.5; }
+.inv-list li::before { content: '—'; color: var(--muted); flex-shrink: 0; }
+
+/* ════════════════ CIERRE ════════════════ */
+.close-s { background: var(--bg); border-top: 1px solid var(--border); position: relative; overflow: hidden; }
+.close-atm { position: absolute; width: 800px; height: 800px; border-radius: 50%; background: radial-gradient(circle, rgba(100,110,170,0.1) 0%, transparent 60%); top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; }
+.close-inner { position: relative; z-index:2; max-width:960px; margin:0 auto; padding: 7rem 3rem; text-align:center; }
+.close-h { font-family: var(--serif); font-size: clamp(48px,7vw,80px); font-weight:800; color:var(--white); line-height:0.97; letter-spacing:-0.03em; margin-bottom:1.5rem; }
+.close-h em { font-style:normal; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.close-p { font-size:17px; font-weight:300; color:var(--body); max-width:460px; margin:0 auto 3rem; line-height:1.9; }
+.close-sig { display:inline-flex; align-items:center; gap:16px; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-top:3rem; }
+.close-sig-line { width:28px; height:1px; background:var(--border2); }
+
+/* ════════════════ RESPONSIVE ════════════════ */
+@media(max-width:720px){
+  .wrap { padding:3.5rem 1.5rem; }
+  .hero-nav, .hero-body { padding-left:1.5rem; padding-right:1.5rem; }
+  .hero-stats { grid-template-columns:1fr 1fr; }
+  .hstat { border-right:none; border-bottom:1px solid var(--border); }
+  .hstat:nth-child(odd){ border-right:1px solid var(--border); }
+  .diag-grid, .opp-grid, .ideas-grid, .inc-grid, .bench-grid { grid-template-columns:1fr; }
+  .card.full { grid-column:auto; }
+  .inv-box { grid-template-columns:1fr; }
+  .inv-left { border-right:none; border-bottom:1px solid var(--border); }
+  .rm-steps { grid-template-columns:1fr 1fr; gap:2rem; }
+  .rm-spine, .rm-grad-line { display:none; }
+  .rm-step { padding-top:1.75rem; }
+  .close-inner { padding:4rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+
+  <nav class="hero-nav">
+    <div class="logo">Loqal<span>.co</span></div>
+    <div class="nav-tag">Análisis & Propuesta · 2026</div>
+  </nav>
+
+  <div class="hero-body">
+    <div class="hero-pill">
+      <span class="hero-pill-dot"></span>
+      Para Alpha Luxury Company
+    </div>
+    <h1 class="hero-h1">
+      El nicho<br>
+      que nadie<br>
+      está <em>dominando</em><br>
+      todavía.
+    </h1>
+    <p class="hero-desc">
+      Un análisis honesto de su presencia en Instagram, el benchmark real contra la competencia, y la estrategia de contenido orgánico que posicionará a Alpha como la referencia de relojes de lujo en México.
+    </p>
+    <a href="#diagnostico" class="cta-link">
+      Ver el análisis
+      <span class="cta-arrow"></span>
+    </a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-n">12</div><div class="hstat-l">Contenidos mensuales</div></div>
+    <div class="hstat"><div class="hstat-n">100%</div><div class="hstat-l">Crecimiento orgánico</div></div>
+    <div class="hstat"><div class="hstat-n">1</div><div class="hstat-l">Sesión de grabación/mes</div></div>
+    <div class="hstat"><div class="hstat-n">30 días</div><div class="hstat-l">Primer reporte</div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══ DIAGNÓSTICO ══ -->
+<section id="diagnostico">
+  <div class="wrap">
+    <span class="eyebrow">Estado actual</span>
+    <h2 class="stitle">Lo que encontramos<br>en su cuenta.</h2>
+    <p class="slead">Antes de proponer cualquier cosa, analizamos su Instagram a fondo. Esto es lo que vemos — sin rodeos.</p>
+
+    <div class="diag-grid">
+      <div class="card">
+        <span class="card-tag">Fortaleza</span>
+        <div class="card-title">Identidad visual superior al mercado</div>
+        <div class="card-body">Negro, blanco, grises. El feed de Alpha tiene criterio editorial. <strong>Es visualmente la mejor cuenta de reventa de relojes de lujo en México.</strong> Eso es una ventaja real — y no es menor.</div>
+      </div>
+      <div class="card">
+        <span class="card-tag">Contenido actual</span>
+        <div class="card-title">Buen ojo, sin narrativa</div>
+        <div class="card-body">La cuenta tiene dirección estética — product shots, editoriales, referencias culturales. Lo que le falta es <strong>un hilo narrativo que enganche y haga que la gente vuelva.</strong></div>
+      </div>
+      <div class="card">
+        <span class="card-tag">Los números</span>
+        <div class="card-title">El techo orgánico real está sin explotar</div>
+        <div class="card-body">Los picos de 156K y 49K views corresponden a contenido pautado, no orgánico. <strong>El techo orgánico real hoy ronda los 1,000 a 8,000 views por pieza.</strong> Eso es exactamente lo que vamos a mover.</div>
+      </div>
+      <div class="card">
+        <span class="card-tag">Lo que falta</span>
+        <div class="card-title">Un personaje que muestre el negocio por dentro</div>
+        <div class="card-body">Lo que distingue a las cuentas que crecen en este nicho es un elemento que Alpha aún no tiene: <strong>alguien que muestre negociaciones, valuaciones e historias reales detrás de las piezas.</strong></div>
+      </div>
+      <div class="card full">
+        <span class="card-tag">El hallazgo más importante</span>
+        <div class="card-title">Los relojes solos no viralizan. Las personas sí.</div>
+        <div class="card-body">No importa qué tan buena sea la fotografía de producto. Lo que genera comunidad — y lo que vende relojes de $200,000 MXN — es el contenido que muestra el mundo detrás del negocio. <strong>Alpha tiene todo lo necesario para construir eso. Solo falta la estrategia.</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══ BENCHMARK ══ -->
+<section class="bench-bg">
+  <div class="wrap">
+    <span class="eyebrow">Benchmark</span>
+    <h2 class="stitle">Así está<br>la competencia.</h2>
+    <p class="slead">Analizamos las cuentas más relevantes del nicho de relojes de lujo en Instagram México. El resultado es claro.</p>
+
+    <div class="bench-grid">
+      <div class="bcard">
+        <div class="bcard-head">
+          <span class="bcard-label">Competidor 01 · CDMX</span>
+          <div class="bcard-name">@relojesdelujomexico.mx</div>
+        </div>
+        <div class="bcard-body">
+          <div class="bmetric"><div class="bmetric-l">Seguidores</div><div class="bmetric-v">50K</div></div>
+          <div class="bmetric"><div class="bmetric-l">Views promedio reels</div><div class="bmetric-v">3K – 8K</div></div>
+          <div class="bmetric"><div class="bmetric-l">Total publicaciones</div><div class="bmetric-v">542</div></div>
+          <div class="bcard-note">542 publicaciones para 50K seguidores = crecimiento muy lento. Su único reel viral (2.3M) fue colaboración con cuenta de 1.2M seguidores — no orgánico. Su techo real no supera los 35K.</div>
+        </div>
+      </div>
+
+      <div class="bcard">
+        <div class="bcard-head">
+          <span class="bcard-label">Competidor 02 · Monterrey</span>
+          <div class="bcard-name">@relojes.mty</div>
+        </div>
+        <div class="bcard-body">
+          <div class="bmetric"><div class="bmetric-l">Seguidores</div><div class="bmetric-v">23K</div></div>
+          <div class="bmetric"><div class="bmetric-l">Views promedio reels</div><div class="bmetric-v">3K – 9K</div></div>
+          <div class="bmetric"><div class="bmetric-l">Mejor reel histórico</div><div class="bmetric-v">9,700</div></div>
+          <div class="bcard-note">En los últimos 25 reels ninguno superó los 9,700 views. Publican producto sin narrativa — exactamente lo que Alpha debe evitar para diferenciarse.</div>
+        </div>
+      </div>
+
+      <div class="bcard">
+        <div class="bcard-head alpha-h">
+          <span class="bcard-label">Objetivo</span>
+          <div class="bcard-name gt">@alpha_luxcompany</div>
+        </div>
+        <div class="bcard-body">
+          <div class="bmetric"><div class="bmetric-l">Identidad visual</div><div class="bmetric-v gt">Superior</div></div>
+          <div class="bmetric"><div class="bmetric-l">Posición en el nicho</div><div class="bmetric-v gt">En ventaja</div></div>
+          <div class="bmetric"><div class="bmetric-l">Potencial orgánico</div><div class="bmetric-v gt">Sin explotar</div></div>
+          <div class="bcard-note">Alpha ya supera a la competencia en calidad visual. Lo que necesita es la estrategia de contenido para convertir esa estética en crecimiento real y sostenido.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══ OPORTUNIDAD ══ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">La oportunidad</span>
+    <h2 class="stitle">Por qué el momento<br>es ahora.</h2>
+    <p class="slead">El nicho de relojes de lujo en Instagram México no tiene un líder orgánico. Esa ventana no va a estar abierta para siempre.</p>
+
+    <div class="opp-grid">
+      <div class="ocard">
+        <div class="ocard-num">01</div>
+        <div class="ocard-title">Nadie domina el nicho con contenido orgánico</div>
+        <div class="ocard-body">Los competidores publican producto. Alpha puede publicar experiencias, historias y tensión narrativa. Esa diferencia es la que construye comunidades — y las comunidades venden relojes de $200,000 MXN.</div>
+      </div>
+      <div class="ocard">
+        <div class="ocard-num">02</div>
+        <div class="ocard-title">El modelo ya existe y está funcionando</div>
+        <div class="ocard-body">Ariel Joyerías: 848K seguidores, 80K–350K views por reel. Su fórmula es mostrar el negocio por dentro — negociaciones, valuaciones, casos reales. Alpha puede hacer exactamente eso con la estética de la alta relojería.</div>
+      </div>
+      <div class="ocard">
+        <div class="ocard-num">03</div>
+        <div class="ocard-title">El mercado de reventa crece sin parar</div>
+        <div class="ocard-body">El mercado de relojes de lujo de segunda mano en México creció más del 15% en los últimos dos años. Más personas comprando y vendiendo significa más audiencia con intención real de compra.</div>
+      </div>
+      <div class="ocard">
+        <div class="ocard-num">04</div>
+        <div class="ocard-title">Ya tienen la base — solo falta la narrativa</div>
+        <div class="ocard-body">No reconstruimos la cuenta desde cero. Potenciamos lo que ya funciona — añadiendo el único elemento que falta: contenido que la gente quiere ver aunque no esté buscando comprar un reloj hoy.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══ IDEAS DE CONTENIDO ══ -->
+<section class="ideas-bg">
+  <div class="wrap">
+    <span class="eyebrow">Dirección de contenido</span>
+    <h2 class="stitle">El tipo de contenido<br>que viraliza en este nicho.</h2>
+    <p class="slead">No es teoría. Es lo que funciona en cuentas similares — adaptado a la identidad y el tono de Alpha.</p>
+
+    <div class="ideas-grid">
+      <div class="icard">
+        <div class="icard-num">01</div>
+        <div class="icard-title">Este Rolex vale más usado que nuevo</div>
+        <div class="icard-body">Rompe una creencia que el 95% de la audiencia tiene. Alto potencial de shares porque la gente lo reenvía a sus contactos. Genera conversación en comentarios desde el primer día.</div>
+        <span class="icard-badge">Rompe creencias</span>
+      </div>
+      <div class="icard">
+        <div class="icard-num">02</div>
+        <div class="icard-title">Negociación real con un cliente en el showroom</div>
+        <div class="icard-body">Un cliente llega a vender o comprar. Mostramos la valuación, la negociación, el cierre. Tensión narrativa pura — el espectador quiere saber si se cierra el trato.</div>
+        <span class="icard-badge">Narrativa · Alto enganche</span>
+      </div>
+      <div class="icard">
+        <div class="icard-num">03</div>
+        <div class="icard-title">¿Cómo detectar un Rolex falso en 30 segundos?</div>
+        <div class="icard-body">El miedo a ser estafado es universal en este mercado. Educativo con alto potencial de guardados y shares. Cada guardado le dice al algoritmo que lo distribuya más.</div>
+        <span class="icard-badge">Educativo · Viralizable</span>
+      </div>
+      <div class="icard">
+        <div class="icard-num">04</div>
+        <div class="icard-title">Nos mandaron fotos de este reloj. ¿Qué le decimos?</div>
+        <div class="icard-body">Alguien contacta a Alpha con un reloj sospechoso. El proceso de verificación en tiempo real genera comentarios masivos — todos quieren saber el veredicto.</div>
+        <span class="icard-badge">Intriga · Comentarios</span>
+      </div>
+      <div class="icard">
+        <div class="icard-num">05</div>
+        <div class="icard-title">El reloj que nadie quería y hoy vale una fortuna</div>
+        <div class="icard-body">Storytelling sobre un modelo subestimado que se disparó en valor. Activa la emoción de "el que no vio el valor." Alto potencial de guardados y alcance orgánico.</div>
+        <span class="icard-badge">Storytelling</span>
+      </div>
+      <div class="icard">
+        <div class="icard-num">06</div>
+        <div class="icard-title">Unboxing de una pieza recién llegada</div>
+        <div class="icard-body">El ritual de abrir la caja de un reloj de esta gama genera deseo aspiracional inmediato. Si la pieza es un Patek o un Royal Oak — el efecto se multiplica.</div>
+        <span class="icard-badge">Aspiracional · Deseo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══ INCLUYE ══ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">El servicio</span>
+    <h2 class="stitle">Lo que incluye<br>trabajar con Loqal.co.</h2>
+    <p class="slead">Un equipo dedicado a su cuenta. No un paquete genérico — una estrategia construida específicamente para Alpha.</p>
+
+    <div class="inc-grid">
+      <div class="inccard">
+        <div class="inc-dot"></div>
+        <div>
+          <div class="inc-title">Estrategia de contenido mensual</div>
+          <div class="inc-note">Parrilla completa con temas, formatos y ángulos narrativos definidos antes de grabar una sola pieza.</div>
+        </div>
+      </div>
+      <div class="inccard">
+        <div class="inc-dot"></div>
+        <div>
+          <div class="inc-title">12 contenidos producidos al mes</div>
+          <div class="inc-note">Opción A: 12 reels. Opción B: 8 reels + 4 posts o carrusel. Sin historias — el foco está en el contenido que crece.</div>
+        </div>
+      </div>
+      <div class="inccard">
+        <div class="inc-dot"></div>
+        <div>
+          <div class="inc-title">1 sesión de grabación mensual</div>
+          <div class="inc-note">Vamos al showroom a grabar el contenido del mes. Producción pensada desde la estrategia, no desde la improvisación.</div>
+        </div>
+      </div>
+      <div class="inccard">
+        <div class="inc-dot"></div>
+        <div>
+          <div class="inc-title">Editor dedicado a la cuenta</div>
+          <div class="inc-note">Un editor asignado exclusivamente a Alpha. Conoce la estética, el ritmo y el tono de la marca desde el primer día.</div>
+        </div>
+      </div>
+      <div class="inccard">
+        <div class="inc-dot"></div>
+        <div>
+          <div class="inc-title">Community Manager dedicado</div>
+          <div class="inc-note">Gestión de comentarios y mensajes. En este nicho, un DM sin respuesta rápida es una venta perdida.</div>
+        </div>
+      </div>
+      <div class="inccard">
+        <div class="inc-dot"></div>
+        <div>
+          <div class="inc-title">Reporte mensual el día 30</div>
+          <div class="inc-note">Números reales: alcance, views, crecimiento de seguidores, contenido ganador y ajustes concretos para el mes siguiente.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══ ROADMAP ══ -->
+<section class="roadmap-bg">
+  <div class="wrap">
+    <span class="eyebrow">Cómo arrancamos</span>
+    <h2 class="stitle">Los primeros<br>30 días.</h2>
+    <p class="slead">Un proceso claro, sin improvisación. Cada semana tiene un entregable concreto y visible.</p>
+
+    <div class="roadmap-track">
+      <div class="rm-spine"></div>
+      <div class="rm-grad-line"></div>
+      <div class="rm-steps">
+        <div class="rm-step now">
+          <div class="rm-dot"></div>
+          <span class="rm-week">Semana 01</span>
+          <div class="rm-title">Análisis profundo</div>
+          <div class="rm-desc">Diagnóstico completo, definición de narrativa, tono de comunicación y parrilla de contenido del mes.</div>
+        </div>
+        <div class="rm-step">
+          <div class="rm-dot"></div>
+          <span class="rm-week">Semana 02</span>
+          <div class="rm-title">Producción</div>
+          <div class="rm-desc">Sesión de grabación en el showroom. Producción de los primeros contenidos bajo la estrategia definida.</div>
+        </div>
+        <div class="rm-step">
+          <div class="rm-dot"></div>
+          <span class="rm-week">Semanas 03 – 04</span>
+          <div class="rm-title">Publicación activa</div>
+          <div class="rm-desc">Arranca la publicación orgánica. Monitoreo de métricas en tiempo real y ajustes inmediatos.</div>
+        </div>
+        <div class="rm-step">
+          <div class="rm-dot"></div>
+          <span class="rm-week">Día 30</span>
+          <div class="rm-title">Primer reporte</div>
+          <div class="rm-desc">Resultados reales: alcance, crecimiento, contenido ganador y plan concreto para el mes 2.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══ INVERSIÓN ══ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Inversión</span>
+    <h2 class="stitle">Lo que representa<br>este servicio.</h2>
+    <div class="inv-box">
+      <div class="inv-left">
+        <div class="inv-price">$12,500</div>
+        <span class="inv-pnote">MXN mensual · + IVA con factura</span>
+        <div class="inv-pdesc">Un equipo completo dedicado a su cuenta — estrategia, producción, edición y community management. Por menos de lo que cuesta el mantenimiento de un Rolex.</div>
+      </div>
+      <div class="inv-right">
+        <span class="inv-right-label">Todo lo que incluye</span>
+        <ul class="inv-list">
+          <li>Estrategia de contenido mensual</li>
+          <li>12 contenidos producidos (reels y/o posts)</li>
+          <li>1 sesión de grabación en locación</li>
+          <li>Editor dedicado a la cuenta</li>
+          <li>Community Manager dedicado</li>
+          <li>Reporte de resultados el día 30</li>
+          <li>Sin campañas pagadas — 100% orgánico</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ══ CIERRE ══ -->
+<section class="close-s">
+  <div class="close-atm"></div>
+  <div class="close-inner">
+    <span class="eyebrow" style="text-align:center; display:block; margin-bottom:14px;">La decisión</span>
+    <h2 class="close-h">El nicho está<br><em>esperando</em><br>a su líder.</h2>
+    <p class="close-p">No hay ninguna cuenta en México haciendo esto bien de forma orgánica. La pregunta es si Alpha va a ser la primera — o va a ver cómo alguien más lo hace.</p>
+    <div class="close-sig">
+      <div class="close-sig-line"></div>
+      Loqal.co · 2026
+      <div class="close-sig-line"></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
