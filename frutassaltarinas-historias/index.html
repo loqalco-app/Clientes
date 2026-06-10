@@ -233,6 +233,57 @@
   }
   .cadencia .nota strong{color:var(--mango);}
 
+  /* ---- Edición Mundial ---- */
+  .mundial{
+    background:var(--papel);
+    border:4px dashed var(--sandia);
+    border-radius:20px;
+    padding:34px 28px;
+    position:relative;
+  }
+  .mundial .tag{
+    position:absolute;
+    top:-16px;left:24px;
+    background:var(--sandia);
+    color:#fff;
+    font-weight:800;
+    font-size:12px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    padding:6px 14px;
+    border-radius:999px;
+    border:2px solid var(--hoja-oscura);
+  }
+  .mundial h2{
+    font-family:'Shrikhand',cursive;
+    font-weight:400;
+    font-size:clamp(26px,5.6vw,34px);
+    color:var(--sandia);
+    margin-bottom:4px;
+  }
+  .mundial .sub{color:var(--tinta-suave);font-size:15px;margin-bottom:22px;}
+  .mundial-item{
+    display:flex;gap:14px;
+    padding:14px 0;
+    border-bottom:2px solid #F0EDE2;
+    align-items:flex-start;
+  }
+  .mundial-item:last-of-type{border-bottom:none;}
+  .mundial-item .ico{font-size:24px;line-height:1.3;}
+  .mundial-item h4{font-weight:800;font-size:16px;color:var(--hoja);}
+  .mundial-item p{font-size:15px;color:var(--tinta-suave);}
+  .fechas-tri{
+    margin-top:20px;
+    background:var(--hoja);
+    color:var(--crema);
+    border-radius:12px;
+    padding:14px 18px;
+    font-size:14px;
+    font-weight:600;
+    text-align:center;
+  }
+  .fechas-tri span{color:var(--mango);}
+
   /* ---- No va ---- */
   .nova li{
     list-style:none;
@@ -374,6 +425,52 @@
       </div>
       <p class="nota" style="margin-top:18px;"><strong>Días sugeridos:</strong> lunes, miércoles y sábado. Lunes para arrancar la semana en la mente de la gente, miércoles para sostenerla, y sábado que es el día de más tráfico.</p>
       <p class="nota" style="margin-top:10px;"><strong>Cómo se arma un día:</strong> se eligen 2 categorías distintas de las 6. No hay calendario fijo — el día del local decide qué se graba.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="mundial">
+      <span class="tag">⚽ Solo durante el Mundial</span>
+      <h2>Edición Mundial</h2>
+      <p class="sub">El sistema no cambia — solo se le pone la capa del Mundial. Cuando termine, todo vuelve a la normalidad.</p>
+
+      <div class="mundial-item">
+        <div class="ico">🥤</div>
+        <div>
+          <h4>El Licuado del Tri</h4>
+          <p>Verde, blanco y rojo en capas. Disponible solo durante el Mundial — y su preparación es la historia.</p>
+        </div>
+      </div>
+
+      <div class="mundial-item">
+        <div class="ico">📺</div>
+        <div>
+          <h4>Día de partido = día extra de historias</h4>
+          <p>La tele puesta, la gente con su jugo y el momento del gol — el barrio explotando es la historia.</p>
+        </div>
+      </div>
+
+      <div class="mundial-item">
+        <div class="ico">🗳️</div>
+        <div>
+          <h4>Encuesta de marcador</h4>
+          <p>"¿Cómo queda México?" — y si gana el Tri, precio especial del Licuado del Tri al día siguiente.</p>
+        </div>
+      </div>
+
+      <div class="mundial-item">
+        <div class="ico">👕</div>
+        <div>
+          <h4>La banda en modo Mundial</h4>
+          <p>Staff con jersey, clientes con playera, el debate del mostrador. Cero producción, pura captura.</p>
+        </div>
+      </div>
+
+      <div class="fechas-tri">
+        Juega México: <span>Jue 11 jun · 1pm</span> &nbsp;|&nbsp; <span>Jue 18 jun · 7pm</span> &nbsp;|&nbsp; <span>Mié 24 jun · 7pm</span>
+      </div>
     </div>
   </div>
 </section>
